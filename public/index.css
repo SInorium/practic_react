@@ -1,0 +1,36 @@
+.app {
+  width: 250px;
+}
+.clock {
+  border: 1px solid grey;
+  border-radius: 5px;
+
+  margin-top: 1rem;
+  padding: 0.5rem;
+}
+.logo {
+}
+.lots {
+}
+.lot {
+  border: 1px solid grey;
+  border-radius: 5px;
+
+  padding: 0.5rem;
+  margin-top: 1rem;
+}
+
+.price {
+  float: right;
+}
+
+h1,
+p {
+  margin: 0;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  margin: 8px;
+}

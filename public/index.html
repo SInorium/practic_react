@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="index.css">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="root"></div>
+</body>
+
+
+<script>
+  const state = {
+    time: new Date().toLocaleTimeString(),
+    lots: [
+      {
+        id: 1,
+        price: 20,
+        title: 'Apple',
+        description: 'Apple description',
+      },
+      {
+        id: 2,
+        price: 40,
+        title: 'Orange',
+        description: 'Orange description'
+      }
+    ],
+  }
+
+  function Logo() {
+    const logo = document.createElement('img')
+    logo.className = "logo"
+    logo.src = 'logo.svg'
+    return logo
+  }
+
+  function Header() {
+    const header = document.createElement('header')
+    header.append(Logo())
+    return header
+  }
+
+  function Clock({ time }) {
+    const clock = document.createElement('div')
+    clock.className = "clock"
+    clock.innerText = time
+    return clock
+  }
+
+  function Lot({ lot }) {
+    const node = document.createElement('article')
+    node.className = "lot"
+
+    const price = document.createElement('div')
+    price.className = "price"
+    price.append(lot.price)
+
+    const title = document.createElement('h1')
+    title.append(lot.title)
+
+    const description = document.createElement('p')
+    description.append(lot.description)
+
+    node.append(price, title, description)
+    return node
+  }
+
+  function Lots({ lots }) {
+    const list = document.createElement('div')
+    list.className = "lots"
+
+    lots.forEach((lot) => {
+      list.append(Lot({ lot }))
+    })
+    return list
+  }
+
+  function App() {
+    const app = document.createElement('div')
+    app.className = 'app'
+    app.append(Header(), Clock({ time: state.time }), Lots({ lots: state.lots }))
+    return app
+  }
+
+  function render(newDom, domRoot) {
+    domRoot.append(newDom)
+  }
+
+  render(App({ state }), document.getElementById('root'))
+</script>
+
+</html>
